@@ -193,6 +193,7 @@ if check_new_gramming == False:
     show_notification("Найдены не существующие граммовки в справочнике, добавьте и запустите заново")
     new_gramming.to_excel(path_for_news + "/new_gramming.xlsx", index=False)
     all_nice_in_table = False
+    exit()
 
 # Добавление правильных признаков
 
@@ -231,7 +232,7 @@ def convert_date(date_series):
         converted_dates = pd.to_datetime(date_series, dayfirst=True)
     return converted_dates
 
-# Пример использования с объектом Series
+
 if sell_out['Дата отгрузки'].dtypes != '<M8[ns]':
     sell_out['Дата отгрузки'] = sell_out['Дата отгрузки'].apply(convert_date)
 
@@ -249,12 +250,22 @@ sell_out.loc[sell_out['стоимость'] == 0, 'стоимость'] = sell_o
 # если цена = 0, то стоимость разделить на количество
 sell_out.loc[sell_out['Цена'] == 0, 'Цена'] = sell_out['стоимость'] / sell_out['Количество шт']
 
+sell_out['Торговый представитель'] = sell_out['Торговый представитель'].str.lower()
+sell_out['Код клиента'] = sell_out['Код клиента'].str.lower()
+sell_out['Сегмент'] = sell_out['Сегмент'].str.lower()
+sell_out['Клиент'] = sell_out['Клиент'].str.title()
+sell_out['Адрес доставки'] = sell_out['Адрес доставки'].str.lower()
+sell_out['Бренд'] = sell_out['Бренд'].str.title()
+sell_out['Группа'] = sell_out['Группа'].str.title()
+sell_out['Вкус'] = sell_out['Вкус'].str.title()
 
 
 # спросить путь для общего файла
 sell_out_path_for_good_file = filedialog.askopenfilename(title="Выберите файл продаж готовый куда добавятся данные, если всё хорошо")
 # если указан путь для общего то загрузить его
 
+
+### чтение общего файла продаж в зависимости от типа
 # чтение если csv
 if sell_out_path_for_good_file.endswith(".csv"):
     is_csv = True
@@ -266,7 +277,7 @@ if sell_out_path_for_good_file.endswith(".xlsx"):
     if sell_out_path_for_good_file != '':
         good_sell_out = pd.read_excel(sell_out_path_for_good_file)
 
-# проверка идентичности заголовков
+# проверка идентичности заголовков общего и подготовленного
 if sell_out_path_for_good_file != '':
     if good_sell_out.columns.equals(sell_out.columns) == False:
         show_notification("Что-то не так с заголовками проверьте файл вручную")  

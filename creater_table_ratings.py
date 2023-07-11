@@ -27,6 +27,16 @@ name = name + "_SKU.xlsx"
 
 osh = pd.read_excel(sell_out_path)
 
+
+osh['Торговый представитель'] = osh['Торговый представитель'].str.lower()
+osh['Код клиента'] = osh['Код клиента'].str.lower()
+osh['Сегмент'] = osh['Сегмент'].str.lower()
+osh['Клиент'] = osh['Клиент'].str.title()
+osh['Адрес доставки'] = osh['Адрес доставки'].str.lower()
+osh['Бренд'] = osh['Бренд'].str.title()
+osh['Группа'] = osh['Группа'].str.title()
+osh['Вкус'] = osh['Вкус'].str.title()
+
 if osh['Дата отгрузки'].dtypes != '<M8[ns]':
     if osh['Дата отгрузки'].astype(str).str.match("\d{4}-\d{2}-\d{2}").all():
         osh['Дата отгрузки'] = pd.to_datetime(osh['Дата отгрузки'], yearfirst = True)
