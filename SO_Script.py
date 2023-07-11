@@ -251,7 +251,11 @@ sell_out.loc[sell_out['стоимость'] == 0, 'стоимость'] = sell_o
 sell_out.loc[sell_out['Цена'] == 0, 'Цена'] = sell_out['стоимость'] / sell_out['Количество шт']
 
 sell_out['Торговый представитель'] = sell_out['Торговый представитель'].str.lower()
+
+sell_out['Код клиента'] = sell_out['Код клиента'].astype(str)
 sell_out['Код клиента'] = sell_out['Код клиента'].str.lower()
+
+
 sell_out['Сегмент'] = sell_out['Сегмент'].str.lower()
 sell_out['Клиент'] = sell_out['Клиент'].str.title()
 sell_out['Адрес доставки'] = sell_out['Адрес доставки'].str.lower()
