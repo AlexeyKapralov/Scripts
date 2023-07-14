@@ -257,11 +257,11 @@ sell_out['Код клиента'] = sell_out['Код клиента'].str.lower(
 
 
 sell_out['Сегмент'] = sell_out['Сегмент'].str.lower()
-sell_out['Клиент'] = sell_out['Клиент'].str.title()
-sell_out['Адрес доставки'] = sell_out['Адрес доставки'].str.lower()
-sell_out['Бренд'] = sell_out['Бренд'].str.title()
-sell_out['Группа'] = sell_out['Группа'].str.title()
-sell_out['Вкус'] = sell_out['Вкус'].str.title()
+sell_out['Клиент'] = sell_out['Клиент'].str.capitalize()
+sell_out['Адрес доставки'] = sell_out['Адрес доставки'].str.capitalize()
+sell_out['Бренд'] = sell_out['Бренд'].str.capitalize()
+sell_out['Группа'] = sell_out['Группа'].str.capitalize()
+sell_out['Вкус'] = sell_out['Вкус'].str.capitalize()
 
 
 # спросить путь для общего файла
