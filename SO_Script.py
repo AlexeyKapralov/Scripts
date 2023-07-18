@@ -176,6 +176,7 @@ if check_new_delicious == False:
 
     # запуск отдельного скрипта
     subprocess.call(["python", "D:\Analysis Burn\Scripts\ParseDelicious_Script.py", new_delicious_path, path_for_news])
+    exit()
 
 ## Получить не найденые граммовки
 
@@ -236,8 +237,10 @@ def convert_date(date_series):
 if sell_out['Дата отгрузки'].dtypes != '<M8[ns]':
     sell_out['Дата отгрузки'] = sell_out['Дата отгрузки'].apply(convert_date)
 
-if sell_out.isna().sum().any():
+
+if sell_out.isnull().any().any():
     show_notification("Есть пустые значения в колонках, необходимо проверить")
+    sell_out.to_excel(path_for_news + "/empty_fields.xlsx", index=False)
     exit()
 
 
@@ -293,6 +296,7 @@ if sell_out_path_for_good_file != '':
         show_notification("Даты дублируются, соединить нельзя, только сохранить отдельно в sell_out")  
         if all_nice_in_table == True:
             sell_out.to_excel(path_for_news + "/sell_out.xlsx", index=False)
+            os.remove(sell_out_path)
         sys.exit()
 
 
@@ -302,12 +306,14 @@ if all_nice_in_table == True:
         all = pd.concat(
             [good_sell_out, sell_out]
         )
-        sell_out.to_excel(path_for_news + "/sell_out.xlsx", index=False)
+        # sell_out.to_excel(path_for_news + "/sell_out.xlsx", index=False)
 
         if is_csv == False:
             all.to_excel(sell_out_path_for_good_file, index=False)
+            os.remove(sell_out_path)
         if is_csv == True:
             all.to_csv(sell_out_path_for_good_file, index=False)
+            os.remove(sell_out_path)
     else:
         sell_out.to_excel(path_for_news + "/sell_out.xlsx", index=False)
         show_notification("Вы не выбрали общих Sell_Out дистрибьютора, поэтому сохранился отдельный файл и не добавился в общие Sell_Out дистра")
