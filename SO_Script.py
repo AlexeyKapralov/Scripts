@@ -176,7 +176,6 @@ if check_new_delicious == False:
 
     # запуск отдельного скрипта
     subprocess.call(["python", "D:\Analysis Burn\Scripts\ParseDelicious_Script.py", new_delicious_path, path_for_news])
-    exit()
 
 ## Получить не найденые граммовки
 
