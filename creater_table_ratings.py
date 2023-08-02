@@ -1,4 +1,5 @@
 import pandas as pd
+import pathlib as pathlib
 from tkinter import Tk, messagebox, filedialog
 import os
 
@@ -12,47 +13,47 @@ def show_notification(text):
 desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
 
 # все файлы прочитать
-s2b = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Санкт Петербург S2B ИП Дрига\Sell_Out_Санкт_Петербург_S2B.xlsx")
-smokelab = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Санкт-Петербург СмокЛаб\Sell_Out_Санкт_Петербург_СмокЛаб.xlsx")
-osh = pd.read_csv(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Москва OSHISHA\Sell_out_Москва_OSHISHA_2023.csv")
-nizhniy_par = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Нижний Новгород Пармаркет\Sell_Out_Нижний_Новгород_Пар_Маркет.xlsx")
-ekb_ural = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Екатеринбург Урал табак\Sell_Out_Екатеринбург_Уралтабак.xlsx")
-kazan_best = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Казань Best Shop\Sell_Out_Казань_Best_Shop.xlsx")
-barnaul_hookah_people = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Барнаул Hookah People\Sell_out_Барнаул_Hookah_People.xlsx")
-krasnodar_sklad = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Краснодар Склад\Sell_Out_Краснодар_Склад.xlsx")
-novosib_ugli = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Новосибирск Поставь Угли\Sell_Out_Новосибирск_Поставь_угли (только Новосибирск).xlsx")
-novosib_bs = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Новосибирск БС-Трейд\Sell_Out_Новосибирск_БС_Трейд.xlsx")
-novosib_filial = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Новосибирск Филиал\sell_out_новосибирск_филиал.xlsx")
+# s2b = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Санкт Петербург S2B ИП Дрига\Sell_Out_Санкт_Петербург_S2B.xlsx")
+# smokelab = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Санкт-Петербург СмокЛаб\Sell_Out_Санкт_Петербург_СмокЛаб.xlsx")
+# osh = pd.read_csv(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Москва OSHISHA\Sell_out_Москва_OSHISHA_2023.csv")
+# nizhniy_par = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Нижний Новгород Пармаркет\Sell_Out_Нижний_Новгород_Пар_Маркет.xlsx")
+# ekb_ural = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Екатеринбург Урал табак\Sell_Out_Екатеринбург_Уралтабак.xlsx")
+# kazan_best = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Казань Best Shop\Sell_Out_Казань_Best_Shop.xlsx")
+# barnaul_hookah_people = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Барнаул Hookah People\Sell_out_Барнаул_Hookah_People.xlsx")
+# krasnodar_sklad = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Краснодар Склад\Sell_Out_Краснодар_Склад.xlsx")
+# novosib_ugli = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Новосибирск Поставь Угли\Sell_Out_Новосибирск_Поставь_угли (только Новосибирск).xlsx")
+# novosib_bs = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Новосибирск БС-Трейд\Sell_Out_Новосибирск_БС_Трейд.xlsx")
+# novosib_filial = pd.read_excel(r"D:\Analysis Burn\Дистрибьютеры отчетность\Source\Отчеты\Новосибирск Филиал\sell_out_новосибирск_филиал.xlsx")
 
 # собрать в одну
-osh = pd.concat([
-    s2b,
-    smokelab,
-    osh,
-    nizhniy_par,
-    ekb_ural,
-    kazan_best,
-    barnaul_hookah_people,
-    krasnodar_sklad,
-    novosib_ugli,
-    novosib_bs,
-    novosib_filial
-])
+# osh = pd.concat([
+#     s2b,
+#     smokelab,
+#     osh,
+#     nizhniy_par,
+#     ekb_ural,
+#     kazan_best,
+#     barnaul_hookah_people,
+#     krasnodar_sklad,
+#     novosib_ugli,
+#     novosib_bs,
+#     novosib_filial
+# ])
 
 # Отображаем диалоговое окно выбора продаж
-# sell_out_path = filedialog.askopenfilename(title="Выберите файл продаж для создания отчета SKU")
+sell_out_path = filedialog.askopenfilename(title="Выберите файл продаж для создания отчета SKU")
 
 # сделать как путь
-# name_temp = pathlib.WindowsPath(sell_out_path)
+name_temp = pathlib.WindowsPath(sell_out_path)
 
-# name = name_temp.name
+name = name_temp.name
 
 # убрать расширение
-# name = name.replace('.xlsx','')
+name = name.replace('.csv','')
 
-# name = name + "_SKU.xlsx"
+name = name + "_SKU.xlsx"
 
-# osh = pd.read_excel(sell_out_path)
+osh = pd.read_csv(sell_out_path)
 
 
 osh['Торговый представитель'] = osh['Торговый представитель'].str.lower()
@@ -64,14 +65,19 @@ osh['Бренд'] = osh['Бренд'].str.title()
 osh['Группа'] = osh['Группа'].str.title()
 osh['Вкус'] = osh['Вкус'].str.title()
 
-if osh['Дата отгрузки'].dtypes != '<M8[ns]':
-    if osh['Дата отгрузки'].astype(str).str.match("\d{4}-\d{2}-\d{2}").all():
-        osh['Дата отгрузки'] = pd.to_datetime(osh['Дата отгрузки'], yearfirst = True)
-    elif osh['Дата отгрузки'].astype(str).str.match("\d{2}-\d{2}-\d{4}").all():
-        osh['Дата отгрузки'] = pd.to_datetime(osh['Дата отгрузки'], dayfirst = True)
+# преобразование типа в дату
+def convert_date(date_series):
+    if date_series[0:4].isdigit():
+        # Попытка преобразования с yearfirst=True
+        converted_dates = pd.to_datetime(date_series, yearfirst=True)
     else:
-        show_notification("С датой что-то не так, проверьте плз")
-        exit()
+        # Если возникла ошибка, пробуем преобразовать с dayfirst=True
+        converted_dates = pd.to_datetime(date_series, dayfirst=True)
+    return converted_dates
+
+
+if osh['Дата отгрузки'].dtypes != '<M8[ns]':
+    osh['Дата отгрузки'] = osh['Дата отгрузки'].apply(convert_date)
 
 
 osh["Год"] = osh["Дата отгрузки"].dt.year
