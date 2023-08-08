@@ -53,7 +53,7 @@ name = name.replace('.csv','')
 
 name = name + "_SKU.xlsx"
 
-osh = pd.read_csv(sell_out_path)
+osh = pd.read_excel(sell_out_path)
 
 
 osh['Торговый представитель'] = osh['Торговый представитель'].str.lower()
@@ -160,6 +160,6 @@ pivot_table2 = pivot_table2[columns2]
 # условное форматирование
 pivot_table = pivot_table.style.background_gradient(subset=['Общая сумма'],cmap='YlGn')
 
-with pd.ExcelWriter(desktop_path + "\\" + 'SKU.xlsx') as writer:  
+with pd.ExcelWriter(r"C:\Users\User\Desktop" + "\\" + name) as writer:  
     pivot_table2.to_excel(writer, sheet_name='1', index=False)  
     pivot_table.to_excel(writer, sheet_name='2', index=False)
