@@ -138,9 +138,9 @@ columns = ['Дистрибьютор'] + ['Клиент_2'] + [col for col in co
 
 pivot_table = pivot_table[columns]
 
-pivot_table = pivot_table.merge(partners[['Город', 'Партнер ', 'Уникальный идентификатор']], how='left', left_on= 'Дистрибьютор', right_on='Уникальный идентификатор')
+pivot_table = pivot_table.merge(partners[['Город', 'Партнер', 'Уникальный идентификатор']], how='left', left_on= 'Дистрибьютор', right_on='Уникальный идентификатор')
 
-columns = ['Город'] + ['Партнер '] + [col for col in columns if col != 'Дистрибьютор']
+columns = ['Город'] + ['Партнер'] + [col for col in columns if col != 'Дистрибьютор']
 
 pivot_table = pivot_table[columns]
 
@@ -149,9 +149,9 @@ pivot_table = pivot_table[columns]
 # 
 columns2 = pivot_table2.columns.values
 
-pivot_table2 = pivot_table2.merge(partners[['Город', 'Партнер ', 'Уникальный идентификатор']], how='left', left_on= 'Дистрибьютор', right_on='Уникальный идентификатор')
+pivot_table2 = pivot_table2.merge(partners[['Город', 'Партнер', 'Уникальный идентификатор']], how='left', left_on= 'Дистрибьютор', right_on='Уникальный идентификатор')
 
-columns2 = ['Город'] + ['Партнер '] + [col for col in columns2 if col != 'Дистрибьютор']
+columns2 = ['Город'] + ['Партнер'] + [col for col in columns2 if col != 'Дистрибьютор']
 pivot_table2 = pivot_table2[columns2]
 
 # 
