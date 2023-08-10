@@ -50,6 +50,7 @@ name = name_temp.name
 
 # убрать расширение
 name = name.replace('.csv','')
+name = name.replace('.xlsx','')
 
 name = name + "_SKU.xlsx"
 
